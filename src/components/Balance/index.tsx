@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -8,16 +8,15 @@ import Typography from '@mui/material/Typography';
 import { useStatement } from "../../context/StatementsProvider/useStatement";
 
 export const Balance = () => {
-    const bull = (
-        <Box
-          component="span"
-          sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-        >
-          •
-        </Box>
-      );
+      const [debits, setDebits] = useState()
 
       const statement = useStatement()
+
+      const debits1:any = statement.total_debits
+      
+      if(debits == ''){
+        setDebits(debits1)
+      }
       
       return (
         <Card sx={{ minWidth: 275, marginBottom: 5 }}>

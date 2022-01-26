@@ -13,9 +13,9 @@ export const Login = () => {
         const password = document.getElementById('Password') as any
         const holder = document.getElementById('Holder') as any
         try {
-            console.log(account.value, password.value, holder.value)
+            
             await auth.authenticate(account.value, password.value, holder.value)
-
+            
             navigate('/', { replace: true })
         } catch (error) {
             if(account.value && password.value && holder.value){

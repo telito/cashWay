@@ -5,7 +5,9 @@ const user = getUserLocalStorage();
 
 export async function RequestStatementSevenDays(){
     try{
-        
+        if(!user){
+            document.location.reload()
+        }
         const request = await Api.get(`statements/last_seven_days_total_credits_and_debits`, {
             headers: {
                 'uid': `${user.uid}`,
@@ -14,7 +16,6 @@ export async function RequestStatementSevenDays(){
             }
             
         });
-        console.log(request)
         return request.data;
     } catch(error){
         console.log('user: error',error);
@@ -24,6 +25,9 @@ export async function RequestStatementSevenDays(){
 
 export async function RequestStatementFifteenDays(){
     try{
+        if(!user){
+            document.location.reload()
+        }
         
         const request = await Api.get(`statements/last_fifteen_days_total_credits_and_debits`, {
             headers: {
@@ -43,6 +47,10 @@ export async function RequestStatementFifteenDays(){
 
 export async function RequestStatementPeriod(){
     try{
+        if(!user){
+            document.location.reload()
+        }
+
         const request = await Api.get(`statements?period=current_month`, {
             headers: {
                 'uid': `${user.uid}`,
@@ -63,6 +71,10 @@ export async function RequestStatementPeriod(){
 
 export async function RequestStatementLastPeriod(){
     try{
+        if(!user){
+            document.location.reload()
+        }
+
         const request = await Api.get(`statements?period=last_month`, {
             headers: {
                 'uid': `${user.uid}`,
