@@ -13,11 +13,17 @@ export const Login = () => {
         const password = document.getElementById('Password') as any
         const holder = document.getElementById('Holder') as any
         try {
+            console.log(account.value, password.value, holder.value)
             await auth.authenticate(account.value, password.value, holder.value)
 
             navigate('/', { replace: true })
         } catch (error) {
-            alert('Conta ou Senha, invalidas!')
+            if(account.value && password.value && holder.value){
+                alert('Conta ou Senha invalidas.')
+            }
+            else{
+                alert('Preencha todos os campos.')
+            } 
             console.log(error)
         }
     }

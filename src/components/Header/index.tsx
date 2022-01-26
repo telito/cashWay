@@ -8,10 +8,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Grid from '@mui/material/Grid';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 
-import './Header.css'
-
-
-
 export const Header = () => {
     const auth = useAuth()
     const navigate = useNavigate()
